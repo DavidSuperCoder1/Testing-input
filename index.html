@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/289cfb4b04.js" crossorigin="anonymous"></script>
+  
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        label{
+        color:red;
+         display:none;
+       }
+       [for=a_correct],[for=b_correct]{
+        color:green;
+        display:none;
+       }
+    
+   </style>
+    <div class="form">
+        <div>
+            <input type="text" id="a">
+            <label for = "a">Please, type only numbers</label>
+            <i for = "a_correct" class="fa-sharp fa-solid fa-check"></i>
+        </div>
+        <div>
+            <input type="text" id="b">
+            <label for = "b">Please, type only numbers</label>
+            <i for = "b_correct" class="fa-sharp fa-solid fa-check"></i>
+        </div>
+        <div id="result"></div>
+        <button id="add">Add</button>
+        
+    </div>
+    
+       
+        <script>
+ 			  document.querySelector("#a").onkeyup = function(){
+                    let a = document.querySelector("#a").value;
+                    if(isNaN(a)){
+                     document.querySelector("[for=a]").style.display ="inline";
+                    }else{
+                        document.querySelector("[for=a]").style.display ="none";
+                        document.querySelector("[for=a_correct]").style.display ="inline";
+                    }
+
+                    if(a==0 || isNaN(a)){
+                        document.querySelector("[for=a_correct]").style.display ="none";
+                    }
+                }
+                document.querySelector("#b").onkeyup = function(){
+                    let b = document.querySelector("#b").value;
+                  
+                    if(isNaN(b)){
+                     document.querySelector("[for=b]").style.display ="inline";
+                    }else{
+                        document.querySelector("[for=b]").style.display ="none";
+                        document.querySelector("[for=b_correct]").style.display ="inline";
+                    }
+
+                    if(b==0 || isNaN(b)){
+                        document.querySelector("[for=b_correct]").style.display ="none";
+                    }
+                }
+            document.querySelector("#add").addEventListener('click', function(e) {
+                let a = +document.querySelector("#a").value;
+                let b = +document.querySelector("#b").value;
+                let result = a + b;
+                if(!isNaN(result)){
+                   document.querySelector("#result").textContent = result;
+               }else{
+                document.querySelector("#result").textContent = "Please, type only numbers";
+               }
+                 
+            })   
+        </script>
+</body>
+</html>
